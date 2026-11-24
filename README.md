@@ -70,4 +70,4 @@ To read the leads, use the Supabase dashboard (Table Editor).
 3. **Legal review**: the whitepaper is only available with a TechSpheres subscription. Check this against GDPR Art. 7(4) (consent must be freely given).
 4. Locked previews use CSS blur. In production, ship pre-blurred raster images instead.
 6. German version: the DE toggle is disabled until the German copy is approved.
-7. About section: insert the approved boilerplate (the placeholder text is still on the page).
+7. About section: the boilerplate is taken from whitepaper chapter 8 (pp. 53–54); have it approved.
