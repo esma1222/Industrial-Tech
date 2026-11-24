@@ -80,9 +80,10 @@
     document.body.classList.add('unlocked');
     form.hidden = true;
     success.hidden = false;
-    $('wp-sub-note').hidden = status !== 'pending_confirmation';
-    var dl = $('wp-download');
-    if (cfg.pdfUrl) { dl.href = cfg.pdfUrl; } else { dl.hidden = true; }
+    if (status === 'subscribed') {
+      // Already a confirmed TechSpheres subscriber: no confirmation step needed.
+      $('wp-sub-text').innerHTML = '<b style="color: #002336">You are already subscribed to TechSpheres.</b> The whitepaper is on its way to your inbox.<br><span style="color: #98a6ae">No email after a few minutes? Please check your spam folder.</span>';
+    }
     success.focus();
   }
 

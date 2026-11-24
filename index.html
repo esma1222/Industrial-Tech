@@ -398,7 +398,7 @@ a{color:#007775}a:hover{color:#003e5f}
           <form id="wp-form" novalidate style="display: flex; flex-direction: column; gap: 18px">
               <div style="display: flex; flex-direction: column; gap: 8px">
                 <h3 style="margin: 0; font-size: 24px; font-weight: 800; color: #002336">Unlock Industrial Tech M&amp;A 2026</h3>
-                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #324e5e">Subscribe to TechSpheres, the monthly atares newsletter covering technology M&amp;A, market developments and strategic insights, and get the complete 63-page whitepaper.</p>
+                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #324e5e">Subscribe to TechSpheres, the monthly atares newsletter covering technology M&amp;A, market developments and strategic insights, and receive the complete 63-page whitepaper by email.</p>
               </div>
               <fieldset id="wp-salutation" style="border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px">
                 <legend style="font-size: 13px; font-weight: 700; color: #002336; padding: 0; margin-bottom: 6px">Salutation *</legend>
@@ -433,20 +433,18 @@ a{color:#007775}a:hover{color:#003e5f}
                 <input id="wp-sub" name="newsletter" type="checkbox" required aria-required="true" style="width: 20px; height: 20px; margin: 1px 0 0; accent-color: #007775; flex: none">
                 <span><b style="color: #002336">Declaration of consent *</b><br>I agree that atares GmbH may send me newsletters (atares TechSpheres) by e-mail. I can revoke this consent at any time free of charge by clicking on the &quot;Unsubscribe&quot; link, which I can find in every newsletter issue. <b style="color: #002336">Required for access to the whitepaper.</b></span>
               </label>
-              <p style="margin: 0; font-size: 12px; line-height: 1.55; color: #324e5e">We use your details to send you TechSpheres and provide the whitepaper. You will receive an e-mail to confirm your subscription. See our <a href="https://atares.team/en/data-protection-declaration/" style="color: #007775; font-weight: 600">privacy policy</a>.</p>
+              <p style="margin: 0; font-size: 12px; line-height: 1.55; color: #324e5e">We use your details to send you TechSpheres and the whitepaper. You will first receive an e-mail to confirm your subscription; the whitepaper follows once you confirm. See our <a href="https://atares.team/en/data-protection-declaration/" style="color: #007775; font-weight: 600">privacy policy</a>.</p>
               <p id="wp-error" role="alert" hidden style="margin: 0; padding: 12px 14px; border-radius: 10px; background: #fdecec; color: #8a1c1c; font-size: 13px; line-height: 1.5"></p>
               <button id="wp-submit" type="submit" class="btn-navy" style="height: 54px; border: 0; border-radius: 12px; background: #003e5f; color: #ffffff; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer">Subscribe and get the whitepaper</button>
               <p style="margin: 0; text-align: center; font-size: 12px; font-style: italic; color: #324e5e">Free of charge. Unsubscribe from TechSpheres at any time.</p>
             </form>
           <div id="wp-success" role="status" tabindex="-1" hidden style="display: flex; flex-direction: column; gap: 18px">
               <span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(0,195,191,.14); display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007775" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></span>
-              <h3 style="margin: 0; font-size: 28px; font-weight: 800; color: #002336">Your whitepaper is ready.</h3>
-              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #324e5e">Thank you for your interest in our Industrial Tech M&amp;A 2026 research.</p>
-              <a id="wp-download" href="#form" target="_blank" rel="noopener" class="btn-navy" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; border-radius: 12px; background: #003e5f; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 700">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"></path></svg>Download the full whitepaper (PDF)</a>
-              <div id="wp-sub-note" hidden style="display: flex; gap: 12px; padding: 14px; border-radius: 10px; background: #f2f3f4; font-size: 13px; line-height: 1.55; color: #324e5e">
+              <h3 style="margin: 0; font-size: 28px; font-weight: 800; color: #002336">Almost there: check your inbox.</h3>
+              <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #324e5e">Thank you for your interest in our Industrial Tech M&amp;A 2026 research. The whitepaper is sent by email.</p>
+              <div id="wp-sub-note" style="display: flex; gap: 12px; padding: 14px; border-radius: 10px; background: #f2f3f4; font-size: 13px; line-height: 1.55; color: #324e5e">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007775" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
-                  <span><b style="color: #002336">One more step for TechSpheres.</b> We have sent a confirmation link to your inbox. Your TechSpheres subscription starts once you confirm it.</span>
+                  <span id="wp-sub-text"><b style="color: #002336">1. Confirm TechSpheres.</b> We have sent a confirmation link to your inbox.<br><b style="color: #002336">2. Receive the whitepaper.</b> As soon as you confirm, we email you the full Industrial Tech M&amp;A 2026 whitepaper.<br><span style="color: #98a6ae">No email after a few minutes? Please check your spam folder.</span></span>
                 </div>
             </div>
         </div>

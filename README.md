@@ -9,7 +9,7 @@ Form submissions are stored in Supabase (project `Industrial-Tech`, ref `abzzpob
 |---|---|
 | `index.html` | The page, converted from the design export (`design/Main.dc.html`) |
 | `css/site.css` | Overrides, lock/unlock states and the mobile layout (≤ 760 px) |
-| `js/config.js` | Supabase URL, publishable key, PDF URL, email flag |
+| `js/config.js` | Supabase URL, publishable key, function name |
 | `js/app.js` | Segment picker, form validation and submission |
 | `assets/` | Images and logos from the design |
 | `design/` | Original design export, kept for reference (not served) |
@@ -32,7 +32,7 @@ Then open http://localhost:8000.
    - the group **"atares TechSpheres"** is ticked;
    - merge fields FNAME, LNAME, SALUTATION, UNTERNEHMEN, POSITION and SPRACHE are filled where the audience has them;
    - the contact is tagged **"Industrial Tech M&A 2026 Whitepaper"**.
-4. The whitepaper unlocks. The lead is kept even if Mailchimp fails; `mailchimp_status` and `mailchimp_error` show what happened.
+4. The page shows "check your inbox"; the whitepaper is emailed by Mailchimp after confirmation. The lead is kept even if Mailchimp fails; `mailchimp_status` and `mailchimp_error` show what happened.
 
 ### Mailchimp secrets (required)
 
@@ -66,7 +66,7 @@ To read the leads, use the Supabase dashboard (Table Editor).
 ## Before launch
 
 1. **Mailchimp secrets**: see above.
-2. **PDF**: done. The final PDF (November 2026, 63 pages) is in Supabase Storage, public bucket `whitepapers`, under an unguessable file name; `pdfUrl` in `js/config.js` points to it. To replace it, upload a new file in the dashboard (Storage → whitepapers) and update `pdfUrl`.
+2. **PDF delivery**: the page does not link the PDF. It is emailed by a Mailchimp automation once the TechSpheres subscription is confirmed (trigger: contact signs up, condition: tag `Industrial Tech M&A 2026 Whitepaper`). The file is in Supabase Storage (bucket `whitepapers`) under an unguessable name that is only used in that Mailchimp email; never commit the link to this public repo.
 3. **Legal review**: the whitepaper is only available with a TechSpheres subscription. Check this against GDPR Art. 7(4) (consent must be freely given).
 4. Locked previews use CSS blur. In production, ship pre-blurred raster images instead.
 6. German version: the DE toggle is disabled until the German copy is approved.
