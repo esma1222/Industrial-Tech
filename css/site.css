@@ -1,0 +1,41 @@
+/* Overrides on top of the exported design's inline styles. */
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+#unlock,#form,#research,#insights,#about{scroll-margin-top:16px}
+
+/* Segment picker */
+.seg{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:18px 10px 20px;border-radius:8px;cursor:pointer;font:inherit;min-height:44px;transition:all .2s;background:rgba(0,35,54,.55);border:1px solid rgba(255,255,255,.12)}
+.seg[aria-selected="true"]{background:rgba(0,195,191,.16);border-color:#00c3bf;box-shadow:0 0 0 3px rgba(0,195,191,.15)}
+.seg:focus-visible,.btn-lime:focus-visible,.btn-navy:focus-visible,.btn-ghost:focus-visible{outline:3px solid #00c3bf;outline-offset:2px}
+
+/* Locked previews (production: replace with pre-blurred raster images) */
+.lock-blur-a{filter:blur(3px)}.lock-blur-b{filter:blur(5px)}.lock-blur-c{filter:blur(8px)}
+body.unlocked .lock-blur{filter:none}
+body.unlocked .lock-badge{display:none!important}
+
+#wp-submit[disabled]{opacity:.7;cursor:progress}
+.field[aria-invalid="true"]{border-color:#c0392b}
+
+/* Mobile (Mobile.dc.html artboard, 390 px) */
+@media (max-width:760px){
+  section>div:not(#unlock),section>header,footer>div{padding-left:16px!important;padding-right:16px!important}
+  section>div[style*="padding: 112px"]{padding-top:64px!important;padding-bottom:64px!important}
+  section>div[style*="padding: 96px"]{padding-top:64px!important;padding-bottom:64px!important}
+  #top{padding-top:32px!important;padding-bottom:56px!important;gap:40px!important}
+  h1{font-size:40px!important}
+  #top p[style*="font-size: 24px"]{font-size:19px!important}
+  h2{font-size:30px!important}
+  #research [style*="font-size: 52px"]{font-size:40px!important}
+  #research>div>div{border-right:0!important;padding:16px 0!important;border-bottom:1px solid rgba(255,255,255,.12)}
+  #insights>div>div:first-child{min-height:300px!important}
+  [role="tablist"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  [role="tablist"]+div,[aria-hidden="true"][style*="top: 58px"]{display:none!important}
+  [aria-live="polite"]{padding:22px!important}
+  [aria-live="polite"]>div+div{border-left:0!important;padding-left:0!important;border-top:1px solid rgba(255,255,255,.12);padding-top:18px}
+  #unlock>div:last-child{padding:200px 16px 64px!important}
+  #form{padding:24px!important}
+  header nav>a:not(.btn-lime){display:none}
+  [style*="min-width: 300px"],[style*="minmax(300px"]{grid-template-columns:1fr!important}
+  [style*="flex: 1 1 460px"],[style*="flex: 1 1 440px"],[style*="flex: 1 1 420px"],[style*="flex: 1 1 400px"],[style*="flex: 2 1 560px"],[style*="flex: 2 1 420px"]{flex-basis:100%!important}
+}

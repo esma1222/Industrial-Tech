@@ -1,0 +1,52 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 8000,
+      "title": "Desktop – full landing page",
+      "expand": "fill",
+      "is_interactive": true
+    },
+    {
+      "file": "Mobile.dc.html",
+      "x": 1540,
+      "y": 0,
+      "w": 390,
+      "h": 7400,
+      "title": "Mobile – 390 px",
+      "is_interactive": true
+    }
+  ],
+  "annotations": [
+    {
+      "id": "title",
+      "x": 0,
+      "y": -300,
+      "w": 240,
+      "maxW": 1930,
+      "text": "atares Insights · Industrial Tech M&A 2026",
+      "kind": "title1"
+    },
+    {
+      "id": "open",
+      "x": 2010,
+      "y": 0,
+      "w": 420,
+      "text": "Open items before build\n\n1. Whitepaper cover, contents and executive-summary pages are rebuilt from the PDF's real text. Swap in true page renders of the PDF (SharePoint › MarCom › 03. Publikationen › 2026 Whitepaper › Output) before launch.\n2. PDF says 'Whitepaper, October 2026' and has 61 pages; brief says November 2026 / 62 pages. Confirm.\n3. Locked previews use CSS blur only in this mock. Production must ship pre-blurred raster images.\n4. Privacy policy, imprint and LinkedIn URLs need verifying (only atares.team confirmed in ExitIQ).\n5. TechSphere: ExitIQ already uses the Supabase 'newsletter-signup' function with double opt-in via Resend: reuse it, source 'Industrial Tech M&A 2026 Whitepaper'.\n6. German copy and legal notices need approval."
+    },
+    {
+      "id": "img",
+      "x": 2010,
+      "y": 620,
+      "w": 420,
+      "text": "Imagery: atares-tinted iStock set from SharePoint (MarCom › SCT Whitepaper › iStock › final) plus the handshake visual from 1.2.5 iStock and the ExitIQ dark gradient background. Logos and colour tokens come from the ExitIQ source.",
+      "fill": "teal"
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}
