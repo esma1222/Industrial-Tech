@@ -123,6 +123,28 @@ Deno.serve(async (req) => {
   let p: Record<string, unknown>;
   try { p = await req.json(); } catch { return json(req, 400, { error: "Invalid JSON" }); }
 
+  // Sync mode: the database trigger forwards a row that an older version of the
+  // page inserted directly, so it can be pushed to Mailchimp.
+  if (p.sync_id) {
+    // Only rows that were just inserted and never synced qualify, so each row is
+    // pushed at most once and an id (random UUID) cannot be replayed later.
+    const { data: row, error } = await db.from("whitepaper_requests")
+      .select("id, salutation, first_name, last_name, email, company, position, language, source, newsletter_opt_in")
+      .eq("id", String(p.sync_id)).eq("mailchimp_status", "pending_sync").not("full_name", "is", null)
+      .gte("created_at", new Date(Date.now() - 10 * 60 * 1000).toISOString())
+      .maybeSingle();
+    if (error) console.error("sync lookup failed", JSON.stringify(error));
+    if (error || !row) return json(req, 404, { error: "not found" });
+    await db.from("whitepaper_requests").update({ mailchimp_status: "not_configured" }).eq("id", row.id); // claim it
+    if (!row.newsletter_opt_in) return json(req, 200, { ok: true, status: "skipped" });
+    const status = await pushToMailchimp(row.id, {
+      salutation: row.salutation ?? "", first_name: row.first_name, last_name: row.last_name,
+      email: row.email, company: row.company ?? "", position: row.position ?? "",
+      language: row.language ?? "en", source: row.source,
+    });
+    return json(req, 200, { ok: true, status });
+  }
+
   if (str(p.website, 200)) return json(req, 200, { ok: true, status: "pending_confirmation" }); // honeypot
 
   const r = {
@@ -153,6 +175,13 @@ Deno.serve(async (req) => {
     return json(req, 500, { error: "storage" });
   }
 
+  const status = await pushToMailchimp(row.id, r);
+
+  // The lead is stored either way, so the visitor gets the whitepaper.
+  return json(req, 200, { ok: true, status });
+});
+
+async function pushToMailchimp(id: string, r: Record<string, string>) {
   const c = mailchimp();
   let status = "not_configured";
   let mcError: string | null = null;
@@ -162,8 +191,6 @@ Deno.serve(async (req) => {
   }
   await db.from("whitepaper_requests")
     .update({ mailchimp_status: status, mailchimp_error: mcError, mailchimp_synced_at: c ? new Date().toISOString() : null })
-    .eq("id", row.id);
-
-  // The lead is stored either way, so the visitor gets the whitepaper.
-  return json(req, 200, { ok: true, status });
-});
+    .eq("id", id);
+  return status;
+}

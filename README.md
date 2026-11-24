@@ -46,6 +46,14 @@ Set them in the Supabase dashboard: *Edge Functions → Secrets*.
 | `MAILCHIMP_INTEREST_NAME` | Optional. Group name to tick; default `atares TechSpheres` |
 | `ALLOWED_ORIGINS` | Optional. E.g. `https://industrial-tech.vercel.app` to accept calls only from the live site |
 
+### First page version (still live on some deployments)
+
+The first version of the page inserts `{full_name, email, newsletter_opt_in, ...}` straight into the table.
+That still works: the publishable key may insert those columns (only with `newsletter_opt_in = true`),
+a trigger splits `full_name` into first/last name, and a second trigger (`pg_net`) forwards the row to
+`techspheres-signup`, which pushes it to Mailchimp. See `supabase/migrations/20261124030000_accept_first_page_version.sql`.
+Once the current page is deployed everywhere, this path can be removed.
+
 ## Data
 
 `public.whitepaper_requests` columns: `salutation`, `first_name`, `last_name`, `email`, `company`, `position`,
