@@ -7,5 +7,5 @@ window.WP_CONFIG = {
   signupFunction: 'techspheres-signup',
   source: 'Industrial Tech M&A 2026 Whitepaper',
   // URL of the final PDF (e.g. a Supabase Storage object). Empty = download button hidden.
-  pdfUrl: ''
+  pdfUrl: 'https://abzzpobaifjmrxatvtry.supabase.co/storage/v1/object/public/whitepapers/industrial-tech-ma-2026-a2880890906723de.pdf'
 };
