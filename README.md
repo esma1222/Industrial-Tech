@@ -66,7 +66,7 @@ To read the leads, use the Supabase dashboard (Table Editor).
 ## Before launch
 
 1. **Mailchimp secrets**: see above.
-2. **PDF**: done. The final PDF (November 2026, 62 pages) is in Supabase Storage, public bucket `whitepapers`, under an unguessable file name; `pdfUrl` in `js/config.js` points to it. To replace it, upload a new file in the dashboard (Storage → whitepapers) and update `pdfUrl`.
+2. **PDF**: done. The final PDF (November 2026, 63 pages) is in Supabase Storage, public bucket `whitepapers`, under an unguessable file name; `pdfUrl` in `js/config.js` points to it. To replace it, upload a new file in the dashboard (Storage → whitepapers) and update `pdfUrl`.
 3. **Legal review**: the whitepaper is only available with a TechSpheres subscription. Check this against GDPR Art. 7(4) (consent must be freely given).
 4. Locked previews use CSS blur. In production, ship pre-blurred raster images instead.
 6. German version: the DE toggle is disabled until the German copy is approved.
