@@ -77,6 +77,10 @@
     var email = emailEl.value.trim();
     if (!name) return showError('Please enter your full name.', nameEl);
     if (!EMAIL_RE.test(email)) return showError('Please enter a valid email address.', emailEl);
+    if (!subEl.checked) {
+      subEl.focus();
+      return showError('Please subscribe to TechSphere to receive the whitepaper.');
+    }
 
     btn.disabled = true;
     var label = btn.textContent;
@@ -92,7 +96,7 @@
       body: JSON.stringify({
         full_name: name.slice(0, 200),
         email: email.slice(0, 320),
-        newsletter_opt_in: !!subEl.checked,
+        newsletter_opt_in: true,
         source: cfg.source,
         language: document.documentElement.lang === 'de' ? 'de' : 'en',
         page_url: location.href.slice(0, 2000)
