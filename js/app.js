@@ -44,28 +44,44 @@
 
   // ---- Whitepaper request form ---------------------------------------------
   var form = document.getElementById('wp-form');
-  var nameEl = document.getElementById('wp-name');
-  var emailEl = document.getElementById('wp-email');
-  var subEl = document.getElementById('wp-sub');
-  var errEl = document.getElementById('wp-error');
-  var btn = document.getElementById('wp-submit');
-  var success = document.getElementById('wp-success');
+  var $ = function (id) { return document.getElementById(id); };
+  var fields = {
+    first_name: $('wp-first'), last_name: $('wp-last'), email: $('wp-email'),
+    company: $('wp-company'), position: $('wp-position')
+  };
+  var subEl = $('wp-sub');
+  var errEl = $('wp-error');
+  var btn = $('wp-submit');
+  var success = $('wp-success');
   var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  var MESSAGES = {
+    salutation: 'Please select a salutation.',
+    first_name: 'Please enter your first name.',
+    last_name: 'Please enter your last name.',
+    email: 'Please enter a valid email address.',
+    consent: 'Please subscribe to TechSpheres to receive the whitepaper.'
+  };
 
-  function showError(msg, field) {
-    errEl.textContent = msg;
-    errEl.hidden = false;
-    [nameEl, emailEl].forEach(function (f) { f.removeAttribute('aria-invalid'); });
-    if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
+  function focusFor(key) {
+    if (key === 'salutation') return form.querySelector('input[name="salutation"]');
+    if (key === 'consent') return subEl;
+    return fields[key];
   }
 
-  function unlock(subscribed) {
+  function showError(key, msg) {
+    errEl.textContent = msg || MESSAGES[key];
+    errEl.hidden = false;
+    form.querySelectorAll('[aria-invalid]').forEach(function (f) { f.removeAttribute('aria-invalid'); });
+    var f = key && focusFor(key);
+    if (f) { if (fields[key]) f.setAttribute('aria-invalid', 'true'); f.focus(); }
+  }
+
+  function unlock(status) {
     document.body.classList.add('unlocked');
     form.hidden = true;
     success.hidden = false;
-    document.getElementById('wp-sub-note').hidden = !(subscribed && cfg.emailDeliveryEnabled);
-    document.getElementById('wp-mail-note').hidden = !cfg.emailDeliveryEnabled;
-    var dl = document.getElementById('wp-download');
+    $('wp-sub-note').hidden = status !== 'pending_confirmation';
+    var dl = $('wp-download');
     if (cfg.pdfUrl) { dl.href = cfg.pdfUrl; } else { dl.hidden = true; }
     success.focus();
   }
@@ -73,39 +89,40 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     errEl.hidden = true;
-    var name = nameEl.value.trim();
-    var email = emailEl.value.trim();
-    if (!name) return showError('Please enter your full name.', nameEl);
-    if (!EMAIL_RE.test(email)) return showError('Please enter a valid email address.', emailEl);
-    if (!subEl.checked) {
-      subEl.focus();
-      return showError('Please subscribe to TechSphere to receive the whitepaper.');
-    }
+    var sal = form.querySelector('input[name="salutation"]:checked');
+    var v = {};
+    Object.keys(fields).forEach(function (k) { v[k] = fields[k].value.trim(); });
+    if (!sal) return showError('salutation');
+    if (!v.first_name) return showError('first_name');
+    if (!v.last_name) return showError('last_name');
+    if (!EMAIL_RE.test(v.email)) return showError('email');
+    if (!subEl.checked) return showError('consent');
 
     btn.disabled = true;
     var label = btn.textContent;
     btn.textContent = 'Sending…';
 
-    fetch(cfg.supabaseUrl.replace(/\/$/, '') + '/rest/v1/' + cfg.table, {
+    fetch(cfg.supabaseUrl.replace(/\/$/, '') + '/functions/v1/' + cfg.signupFunction, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': cfg.supabasePublishableKey,
-        'Prefer': 'return=minimal'
-      },
+      headers: { 'Content-Type': 'application/json', 'apikey': cfg.supabasePublishableKey },
       body: JSON.stringify({
-        full_name: name.slice(0, 200),
-        email: email.slice(0, 320),
-        newsletter_opt_in: true,
+        salutation: sal.value,
+        first_name: v.first_name, last_name: v.last_name, email: v.email,
+        company: v.company, position: v.position,
+        consent: true,
+        website: ($('wp-website') || {}).value || '',
         source: cfg.source,
         language: document.documentElement.lang === 'de' ? 'de' : 'en',
         page_url: location.href.slice(0, 2000)
       })
     }).then(function (res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      unlock(!!subEl.checked);
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        if (res.ok && data.ok) return unlock(data.status);
+        if (res.status === 400 && MESSAGES[data.error]) return showError(data.error);
+        throw new Error('HTTP ' + res.status);
+      });
     }).catch(function () {
-      showError('Something went wrong. Please try again in a moment.');
+      showError(null, 'Something went wrong. Please try again in a moment.');
     }).then(function () {
       btn.disabled = false;
       btn.textContent = label;

@@ -398,24 +398,45 @@ a{color:#007775}a:hover{color:#003e5f}
           <form id="wp-form" novalidate style="display: flex; flex-direction: column; gap: 18px">
               <div style="display: flex; flex-direction: column; gap: 8px">
                 <h3 style="margin: 0; font-size: 24px; font-weight: 800; color: #002336">Unlock Industrial Tech M&amp;A 2026</h3>
-                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #324e5e">Subscribe to TechSphere, the atares newsletter covering technology M&amp;A, market developments and strategic insights, and get the complete 62-page whitepaper.</p>
+                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #324e5e">Subscribe to TechSpheres, the monthly atares newsletter covering technology M&amp;A, market developments and strategic insights, and get the complete 62-page whitepaper.</p>
+              </div>
+              <fieldset id="wp-salutation" style="border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px">
+                <legend style="font-size: 13px; font-weight: 700; color: #002336; padding: 0; margin-bottom: 6px">Salutation *</legend>
+                <label style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #002336; cursor: pointer; min-height: 32px"><input type="radio" name="salutation" value="Mr" style="width: 18px; height: 18px; margin: 0; accent-color: #007775">Mr</label><label style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #002336; cursor: pointer; min-height: 32px"><input type="radio" name="salutation" value="Ms" style="width: 18px; height: 18px; margin: 0; accent-color: #007775">Ms</label><label style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #002336; cursor: pointer; min-height: 32px"><input type="radio" name="salutation" value="Mx" style="width: 18px; height: 18px; margin: 0; accent-color: #007775">Mx</label>
+              </fieldset>
+              <div style="display: flex; flex-wrap: wrap; gap: 14px">
+                <div style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 180px; min-width: 0">
+                  <label for="wp-first" style="font-size: 13px; font-weight: 700; color: #002336">First name *</label>
+                  <input id="wp-first" name="first_name" maxlength="200" class="field" type="text" autocomplete="given-name" required="" placeholder="Jane">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 180px; min-width: 0">
+                  <label for="wp-last" style="font-size: 13px; font-weight: 700; color: #002336">Last name *</label>
+                  <input id="wp-last" name="last_name" maxlength="200" class="field" type="text" autocomplete="family-name" required="" placeholder="Doe">
+                </div>
               </div>
               <div style="display: flex; flex-direction: column; gap: 6px">
-                <label for="wp-name" style="font-size: 13px; font-weight: 700; color: #002336">Full name</label>
-                <input id="wp-name" name="full_name" maxlength="200" class="field" type="text" autocomplete="name" required="" placeholder="Jane Doe">
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 6px">
-                <label for="wp-email" style="font-size: 13px; font-weight: 700; color: #002336">Email address</label>
+                <label for="wp-email" style="font-size: 13px; font-weight: 700; color: #002336">Email address *</label>
                 <input id="wp-email" name="email" maxlength="320" class="field" type="email" autocomplete="email" required="" placeholder="jane.doe@company.com">
               </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 14px">
+                <div style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 180px; min-width: 0">
+                  <label for="wp-company" style="font-size: 13px; font-weight: 700; color: #002336">Company <span style="font-weight: 500; color: #98a6ae">(optional)</span></label>
+                  <input id="wp-company" name="company" maxlength="200" class="field" type="text" autocomplete="organization" placeholder="">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 6px; flex: 1 1 180px; min-width: 0">
+                  <label for="wp-position" style="font-size: 13px; font-weight: 700; color: #002336">Position <span style="font-weight: 500; color: #98a6ae">(optional)</span></label>
+                  <input id="wp-position" name="position" maxlength="200" class="field" type="text" autocomplete="organization-title" placeholder="">
+                </div>
+              </div>
+              <div aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden"><label for="wp-website">Website</label><input id="wp-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
               <label style="display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.55; color: #324e5e; padding: 14px; border-radius: 10px; background: #f2f3f4; cursor: pointer">
                 <input id="wp-sub" name="newsletter" type="checkbox" required aria-required="true" style="width: 20px; height: 20px; margin: 1px 0 0; accent-color: #007775; flex: none">
-                <span>I subscribe to TechSphere and receive technology M&amp;A insights, market updates and research from atares. <b style="color: #002336">Required for access to the whitepaper.</b></span>
+                <span><b style="color: #002336">Declaration of consent *</b><br>I agree that atares GmbH may send me newsletters (atares TechSpheres) by e-mail. I can revoke this consent at any time free of charge by clicking on the &quot;Unsubscribe&quot; link, which I can find in every newsletter issue. <b style="color: #002336">Required for access to the whitepaper.</b></span>
               </label>
-              <p style="margin: 0; font-size: 12px; line-height: 1.55; color: #324e5e">We use your details to send you TechSphere and provide the whitepaper. You can unsubscribe at any time. See our <a href="https://atares.team" style="color: #007775; font-weight: 600">privacy policy</a>.</p>
+              <p style="margin: 0; font-size: 12px; line-height: 1.55; color: #324e5e">We use your details to send you TechSpheres and provide the whitepaper. You will receive an e-mail to confirm your subscription. See our <a href="https://atares.team/en/data-protection-declaration/" style="color: #007775; font-weight: 600">privacy policy</a>.</p>
               <p id="wp-error" role="alert" hidden style="margin: 0; padding: 12px 14px; border-radius: 10px; background: #fdecec; color: #8a1c1c; font-size: 13px; line-height: 1.5"></p>
               <button id="wp-submit" type="submit" class="btn-navy" style="height: 54px; border: 0; border-radius: 12px; background: #003e5f; color: #ffffff; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer">Subscribe and get the whitepaper</button>
-              <p style="margin: 0; text-align: center; font-size: 12px; font-style: italic; color: #324e5e">Free of charge. Unsubscribe from TechSphere at any time.</p>
+              <p style="margin: 0; text-align: center; font-size: 12px; font-style: italic; color: #324e5e">Free of charge. Unsubscribe from TechSpheres at any time.</p>
             </form>
           <div id="wp-success" role="status" tabindex="-1" hidden style="display: flex; flex-direction: column; gap: 18px">
               <span style="width: 52px; height: 52px; border-radius: 50%; background: rgba(0,195,191,.14); display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007775" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></span>
@@ -425,9 +446,8 @@ a{color:#007775}a:hover{color:#003e5f}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"></path></svg>Download the full whitepaper (PDF)</a>
               <div id="wp-sub-note" hidden style="display: flex; gap: 12px; padding: 14px; border-radius: 10px; background: #f2f3f4; font-size: 13px; line-height: 1.55; color: #324e5e">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007775" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
-                  <span><b style="color: #002336">One more step for TechSphere.</b> We have sent a confirmation link to your inbox. Your subscription starts once you confirm it.</span>
+                  <span><b style="color: #002336">One more step for TechSpheres.</b> We have sent a confirmation link to your inbox. Your TechSpheres subscription starts once you confirm it.</span>
                 </div>
-              <p id="wp-mail-note" hidden style="margin: 0; font-size: 12px; color: #98a6ae">A secure download link has also been sent to your email address. It expires after 7 days.</p>
             </div>
         </div>
       </div>
@@ -480,9 +500,9 @@ a{color:#007775}a:hover{color:#003e5f}
 <section class="ts-bg">
   <div style="max-width: 1200px; margin: 0 auto; padding: 96px 32px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
     <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-      <p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #b7fdfc">TECHSPHERE · THE ATARES NEWSLETTER</p>
+      <p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .14em; color: #b7fdfc">TECHSPHERES · THE ATARES NEWSLETTER</p>
       <h2 style="margin: 0; font-size: 42px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; color: #ffffff">Stay ahead of technology M&amp;A.</h2>
-      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: rgba(255,255,255,.85); max-width: 520px">TechSphere brings you insights into technology markets, M&amp;A developments, emerging trends and strategic opportunities.</p>
+      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: rgba(255,255,255,.85); max-width: 520px">TechSpheres brings you insights into technology markets, M&amp;A developments, emerging trends and strategic opportunities.</p>
     </div>
     <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
       <ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px">
@@ -504,9 +524,9 @@ a{color:#007775}a:hover{color:#003e5f}
       <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 22px; font-size: 14px">
         <a href="https://atares.team" style="color: rgba(255,255,255,.8); text-decoration: none; padding: 10px 0">atares.team</a>
         <a href="https://atares.team" style="color: rgba(255,255,255,.8); text-decoration: none; padding: 10px 0">Contact</a>
-        <a href="https://www.linkedin.com" style="color: rgba(255,255,255,.8); text-decoration: none; padding: 10px 0">LinkedIn</a>
-        <a href="https://atares.team" style="color: rgba(255,255,255,.8); text-decoration: none; padding: 10px 0">Imprint</a>
-        <a href="https://atares.team" style="color: rgba(255,255,255,.8); text-decoration: none; padding: 10px 0">Privacy policy</a>
+        <a href="https://www.linkedin.com/company/atares-team" style="color: rgba(255,255,255,.8); text-decoration: none; padding: 10px 0">LinkedIn</a>
+        <a href="https://atares.team/en/imprint/" style="color: rgba(255,255,255,.8); text-decoration: none; padding: 10px 0">Imprint</a>
+        <a href="https://atares.team/en/data-protection-declaration/" style="color: rgba(255,255,255,.8); text-decoration: none; padding: 10px 0">Privacy policy</a>
       </nav>
     </div>
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.1); font-size: 12px; color: rgba(255,255,255,.6)">
