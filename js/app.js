@@ -38,10 +38,6 @@
   });
   pick('sense');
 
-  // ---- Language toggle (DE copy pending approval) --------------------------
-  var langBtns = document.querySelectorAll('[aria-label="Language"] button');
-  if (langBtns[1]) { langBtns[1].disabled = true; langBtns[1].title = 'German version coming soon'; }
-
   // ---- Whitepaper request form ---------------------------------------------
   var form = document.getElementById('wp-form');
   var $ = function (id) { return document.getElementById(id); };

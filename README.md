@@ -69,5 +69,5 @@ To read the leads, use the Supabase dashboard (Table Editor).
 2. **PDF delivery**: the page does not link the PDF. It is emailed by a Mailchimp automation once the TechSpheres subscription is confirmed (trigger: contact signs up, condition: tag `Industrial Tech M&A 2026 Whitepaper`). The file is in Supabase Storage (bucket `whitepapers`) under an unguessable name that is only used in that Mailchimp email; never commit the link to this public repo.
 3. **Legal review**: the whitepaper is only available with a TechSpheres subscription. Check this against GDPR Art. 7(4) (consent must be freely given).
 4. Locked previews use CSS blur. In production, ship pre-blurred raster images instead.
-6. German version: the DE toggle is disabled until the German copy is approved.
+6. Language: the page is English only, like the whitepaper (no language switch).
 7. About section: the boilerplate is taken from whitepaper chapter 8 (pp. 53–54); have it approved.
